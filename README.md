@@ -1,4 +1,12 @@
-vim
+vimrc:
+-------
+
+Use vundle to install plugin.
+
+Open .vimrc
+```
+:PluginInstall
+```
 
 Purpose:
 --------
