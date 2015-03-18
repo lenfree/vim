@@ -26,6 +26,11 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'moll/vim-node'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
+Plugin 'wookiehangover/jshint.vim'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " " Snippets are separated from the engine. Add this if you want them:
@@ -50,7 +55,7 @@ set laststatus=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set tw=80 " when the line will wrap
+"set tw=80 " when the line will wrap
 set colorcolumn=81
 
 " Show special characters
@@ -66,7 +71,7 @@ syntax on
 
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby'
+let g:snipMate.scope_aliases['ruby'] = 'ruby, javascript'
 
 
 " Trigger configuration. Do not use <tab> if you use
