@@ -231,8 +231,8 @@ set nrformats=
 
 set tabstop=2
 set shiftwidth=2
-set colorcolumn=81
-set tw=80
+""set colorcolumn=81
+set tw=90
 set expandtab
 set autoindent
 set smartindent
@@ -242,6 +242,9 @@ set visualbell t_vb=
 set noerrorbells
 set invlist
 
+" https://github.com/scrooloose/vimfiles/blob/master/colors/jhdark.vim
+hi Directory guifg=#FF0000 ctermfg=red
+hi Comment   guifg=#008800  gui=none ctermfg=yellow cterm=none
 autocmd InsertLeave * set nopaste
 
 " Shortcut
