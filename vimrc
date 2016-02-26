@@ -41,18 +41,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
             \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
             \   }
             \ }
-NeoBundleLazy 'Shougo/neomru.vim', { 
-            \   'depends' : 'Shougo/unite.vim',
-            \   'autoload' : {
-            \       'unite_sources' : 'file_mru'
-            \   }
-            \ }
-NeoBundleLazy 'Shougo/unite-outline', { 
-            \   'depends' : 'Shougo/unite.vim',
-            \   'autoload' : {
-            \       'unite_sources' : 'outline'
-            \   }
-            \ }
+
 let vimproc_updcmd = has('win64') ? 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
 execute "NeoBundle 'Shougo/vimproc'," . string({
             \ 'build' : {
@@ -112,6 +101,7 @@ NeoBundle     'mattn/excitetranslate-vim'
 NeoBundle     'mattn/httpstatus-vim'
 NeoBundle     'mattn/sonictemplate-vim'
 NeoBundle     'chase/vim-ansible-yaml'
+NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
 NeoBundle     'elzr/vim-json'
 NeoBundle 'mattn/jscomplete-vim'
 NeoBundle     'scrooloose/nerdtree'
@@ -155,16 +145,12 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'disassembler/vim-snippets'
 " }}}
 
-
-
-
-
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
-if g:Meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete'
-else
-    NeoBundle 'Shougo/neocomplcache'
-endif
+""if g:Meet_neocomplete_requirements()
+""    NeoBundle 'Shougo/neocomplete'
+""else
+""    NeoBundle 'Shougo/neocomplcache'
+""endif
 
 " 要 python インターフェイス
 if has('python')
@@ -180,7 +166,7 @@ autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
 autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd BufRead,BufNewFile *.pp set ft=ruby
-filetype on
+filetype plugin indent on
 syntax on
 
 " Go 用
@@ -343,6 +329,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " " let g:UltiSnipsEditSplit="vertical"
 " "
 let g:ycm_min_num_of_chars_for_completion = 1
+
+" golang
+let g:neocomplete#enable_at_startup = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 au BufRead,BufNewFile *.js set filetype=javascript shiftwidth=4
 au BufRead,BufNewFile *.js.hbs set filetype=javascript shiftwidth=4
