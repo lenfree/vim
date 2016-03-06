@@ -331,6 +331,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_interfaces = 1
 let g:go_fmt_autosave = 0
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = "-tabs=false -tabwidth=4"
 
 au BufRead,BufNewFile *.js set filetype=javascript shiftwidth=4
 au BufRead,BufNewFile *.js.hbs set filetype=javascript shiftwidth=4
@@ -349,16 +350,17 @@ au BufRead,BufNewFile *.hbsp set filetype=handlebars shiftwidth=4
 au BufRead,BufNewFile *.haml set filetype=haml shiftwidth=2
 au BufRead,BufNewFile *.eco set filetype=eco shiftwidth=2
 au BufRead,BufNewFile *.pdf.erb set filetype=eruby shiftwidth=2
+au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
 
 filetype off
 filetype plugin indent off
 set runtimepath+=/usr/local/Cellar/go/misc/vim
 filetype plugin indent on
 syntax on
-autocmd FileType c,go setlocal shiftwidth=4
-autocmd FileType c,go setlocal tabstop=4
-autocmd FileType c,go setlocal softtabstop=4
-autocmd FileType c,go setlocal expandtab
+""autocmd FileType c,go setlocal shiftwidth=4
+""autocmd FileType c,go setlocal tabstop=4
+""autocmd FileType c,go setlocal softtabstop=4
+""autocmd FileType c,go setlocal expandtab
 
 call neobundle#end()
 NeoBundleCheck
