@@ -38,8 +38,8 @@ NeoBundle     'tpope/vim-surround'
 NeoBundle     'tpope/vim-endwise'
 NeoBundleLazy 'Shougo/unite.vim', {
             \   'autoload' : {
-            \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
-            \   }
+            \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ],
+            \   },
             \ }
 
 let vimproc_updcmd = has('win64') ? 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
@@ -166,8 +166,6 @@ autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
 autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd BufRead,BufNewFile *.pp set ft=ruby
-filetype plugin indent on
-syntax on
 
 " Go 用
 if $GOPATH != ''
@@ -192,15 +190,12 @@ endif
 
 set number
 set list
-"set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮
-""set listchars=tab:»\ ,eol:↲,extends:»,precedes:«,nbsp:%
 set showmatch
 set smartcase
 set ruler
 set title
-set statusline=\ %t\ %y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%r%m%=%c:%l/%L\ %{fugitive#statusline()}\ 
 set laststatus=2
-"set cmdheight=2
+set cmdheight=2
 set clipboard+=unnamed
 set cursorline
 set hlsearch
@@ -217,7 +212,7 @@ set nrformats=
 
 set tabstop=2
 set shiftwidth=2
-""set colorcolumn=81
+set colorcolumn=81
 set tw=90
 set expandtab
 set autoindent
@@ -226,7 +221,6 @@ set smartindent
 set smarttab
 set visualbell t_vb=
 set noerrorbells
-set invlist
 
 " https://github.com/scrooloose/vimfiles/blob/master/colors/jhdark.vim
 hi Directory guifg=#FF0000 ctermfg=red
@@ -312,10 +306,6 @@ let g:lightline = {
 " ctrlp
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*,vendor/*
 
-" emmet
-let g:user_emmet_install_global = 0
-autocmd FileType * EmmetInstall
-
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby, javascript'
@@ -337,6 +327,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_interfaces = 1
+let g:go_fmt_autosave = 0
+let g:go_fmt_command = "goimports"
 
 au BufRead,BufNewFile *.js set filetype=javascript shiftwidth=4
 au BufRead,BufNewFile *.js.hbs set filetype=javascript shiftwidth=4
@@ -356,8 +350,15 @@ au BufRead,BufNewFile *.haml set filetype=haml shiftwidth=2
 au BufRead,BufNewFile *.eco set filetype=eco shiftwidth=2
 au BufRead,BufNewFile *.pdf.erb set filetype=eruby shiftwidth=2
 
+filetype off
+filetype plugin indent off
+set runtimepath+=/usr/local/Cellar/go/misc/vim
+filetype plugin indent on
+syntax on
+autocmd FileType c,go setlocal shiftwidth=4
+autocmd FileType c,go setlocal tabstop=4
+autocmd FileType c,go setlocal softtabstop=4
+autocmd FileType c,go setlocal expandtab
 
 call neobundle#end()
-filetype plugin indent on
-
 NeoBundleCheck
