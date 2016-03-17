@@ -3,3 +3,8 @@
 bundle/
 plugin/
 view
+snippets/
+syntax/
+indent/
+ftdetect/
+ftplugin/
