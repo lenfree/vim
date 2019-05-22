@@ -300,5 +300,10 @@ autocmd FileType c,go setlocal tabstop=8
 autocmd FileType c,go setlocal softtabstop=8
 autocmd FileType c,go setlocal expandtab
 
+
+"https://github.com/junegunn/fzf
+set rtp+=/usr/local/opt/fzf
+
+
 call neobundle#end()
 NeoBundleCheck
